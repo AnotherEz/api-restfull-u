@@ -18,10 +18,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-
-Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
+Route::middleware(['web'])->group(function () {
+    Route::get('/google-auth/redirect', [AuthController::class, 'redirectToGoogle']);
+    Route::get('/google-auth/callback', [AuthController::class, 'handleGoogleCallback']);
 });
+
+/* 
+
+Route::get('/google-auth/redirect', [AuthController::class, 'redirectToGoogle']);
+
 
  
 Route::get('/google-auth/callback', function () {
@@ -35,5 +40,7 @@ Route::get('/google-auth/callback', function () {
     ]);
  
     Auth::login($user);
+    
  
 });
+ */
