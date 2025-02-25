@@ -95,9 +95,6 @@ public function handleGoogleCallback()
 }
 
 
-
-
-
     // Cierre de sesión
     public function logout(Request $request)
     {
@@ -113,21 +110,6 @@ public function handleGoogleCallback()
 
     
     //auth por google
-// AuthController.php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function redirectToGoogle()
 {
@@ -139,9 +121,6 @@ public function handleGoogleCallback()
         return response()->json(['error' => 'Error al obtener la URL de redirección: ' . $e->getMessage()], 500);
     }
 }
-
-
-    
 
 }
 
